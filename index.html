@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commodities Price Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script>
+        function showTab(tabId) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => {
+                tab.style.display = (tab.id === tabId + '-tab') ? 'block' : 'none';
+            });
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Commodities Price Predictor</h1>
+    </header>
+
+    <main>
+        <nav>
+            <button onclick="showTab('bike')">Bike</button>
+            <button onclick="showTab('car')">Car</button>
+            <button onclick="showTab('laptop')">Laptop</button>
+            <button onclick="showTab('mobile')">Mobile</button>
+        </nav>
+
+        <div id="bike-tab" class="tab-content">
+            <h2>Enter Bike Specifications</h2>
+            <form id="bike-form">
+                <label for="bike-brand">Brand:</label>
+                <select id="bike-brand" name="brand" required>
+                    <option value="" disabled selected>Select Brand</option>
+                </select>
+
+                <label for="bike-modelYear">Model Year:</label>
+                <select id="bike-modelYear" name="modelYear" required>
+                </select>
+
+                <label for="bike-fuelType">Fuel Type:</label>
+                <select id="bike-fuelType" name="fuelType" required>
+                    <option value="" disabled selected>Select Fuel Type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Gas">Gas</option>
+                    <option value="Electric">Electric</option>
+                </select>
+
+                <label for="bike-gears">Gears:</label>
+                <select id="bike-gears" name="gears" required>
+                </select>
+
+                <label for="bike-topSpeed">Top Speed (km/h):</label>
+                <select id="bike-topSpeed" name="topSpeed" required>
+                </select>
+
+                <button type="submit">Predict Price</button>
+            </form>
+
+            <div class="result-container">
+                <h2>Predicted Price</h2>
+                <p id="bike-predicted-price">Please enter bike specifications and submit the form.</p>
+            </div>
+        </div>
+
+        <div id="car-tab" class="tab-content" style="display:none;">
+            <h2>Enter Car Specifications</h2>
+            <form id="car-form">
+                <label for="car-brand">Brand:</label>
+                <select id="car-brand" name="brand" required>
+                    <option value="" disabled selected>Select Brand</option>
+                </select>
+
+                <label for="car-modelYear">Model Year:</label>
+                <select id="car-modelYear" name="modelYear" required>
+                </select>
+
+                <label for="car-fuelType">Fuel Type:</label>
+                <select id="car-fuelType" name="fuelType" required>
+                    <option value="" disabled selected>Select Fuel Type</option>
+                    <option value="Petrol">Petrol</option>
+                    <option value="Gas">Gas</option>
+                    <option value="Electric">Electric</option>
+                </select>
+
+                <label for="car-gears">Gears:</label>
+                <select id="car-gears" name="gears" required>
+                    <option value="" disabled selected>Select Gears</option>
+                    <option value="Manual">Manual</option>
+                    <option value="Automatic">Automatic</option>
+                </select>
+
+                <label for="car-topSpeed">Top Speed (km/h):</label>
+                <select id="car-topSpeed" name="topSpeed" required>
+                </select>
+
+                <label for="car-mileageValue">Mileage Value:</label>
+                <input type="number" id="car-mileageValue" name="mileageValue" required>
+
+                <label for="car-mileageUnit">Unit:</label>
+                <select id="car-mileageUnit" name="mileageUnit" required>
+                    <option value="" disabled selected>Select Unit</option>
+                    <option value="Liters">Liters</option>
+                    <option value="Gallons">Gallons</option>
+                    <option value="Minutes">Minutes</option>
+                </select>
+
+                <button type="submit">Predict Price</button>
+            </form>
+
+            <div class="result-container">
+                <h2>Predicted Price</h2>
+                <p id="car-predicted-price">Please enter car specifications and submit the form.</p>
+            </div>
+        </div>
+
+        <div id="laptop-tab" class="tab-content" style="display:none;">
+            <h2>Enter Laptop Specifications</h2>
+            <form id="laptop-form">
+                <label for="laptop-brand">Brand:</label>
+                <select id="laptop-brand" name="brand" required>
+                    <option value="" disabled selected>Select Brand</option>
+                </select>
+
+                <label for="laptop-type">Type:</label>
+                <select id="laptop-type" name="type" required>
+                    <option value="" disabled selected>Select Type</option>
+                </select>
+
+                <label for="laptop-ram">RAM (GB):</label>
+                <select id="laptop-ram" name="ram" required>
+                </select>
+
+                <label for="laptop-weight">Weight (kg):</label>
+                <select id="laptop-weight" name="weight" required>
+                </select>
+
+                <label for="laptop-touchscreen">Touchscreen:</label>
+                <select id="laptop-touchscreen" name="touchscreen" required>
+                    <option value="" disabled selected>Select Touchscreen Option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="laptop-ips">IPS Display:</label>
+                <select id="laptop-ips" name="ips" required>
+                    <option value="" disabled selected>Select IPS Option</option>
+                    <option value="Yes">Yes</option>
+                    <option value="No">No</option>
+                </select>
+
+                <label for="laptop-screenSize">Screen Size (inches):</label>
+                <select id="laptop-screenSize" name="screenSize" required>
+                </select>
+
+                <label for="laptop-screenResolution">Screen Resolution:</label>
+                <select id="laptop-screenResolution" name="screenResolution" required>
+                </select>
+
+                <label for="laptop-cpu">CPU:</label>
+                <select id="laptop-cpu" name="cpu" required>
+                </select>
+
+                <label for="laptop-hdd">HDD (GB):</label>
+                <select id="laptop-hdd" name="hdd" required>
+                </select>
+
+                <label for="laptop-ssd">SSD (GB):</label>
+                <select id="laptop-ssd" name="ssd" required>
+                </select>
+
+                <label for="laptop-gpu">GPU:</label>
+                <select id="laptop-gpu" name="gpu" required>
+                </select>
+
+                <label for="laptop-os">Operating System:</label>
+                <select id="laptop-os" name="os" required>
+                    <option value="" disabled selected>Select OS</option>
+                    <option value="Windows 10">Windows 10</option>
+                    <option value="Windows 11">Windows 11</option>
+                    <option value="macOS">macOS</option>
+                    <option value="Chrome OS">Chrome OS</option>
+                </select>
+
+                <button type="submit">Predict Price</button>
+            </form>
+
+            <div class="result-container">
+                <h2>Predicted Price</h2>
+                <p id="laptop-predicted-price">Please enter laptop specifications and submit the form.</p>
+            </div>
+        </div>
+
+        <div id="mobile-tab" class="tab-content" style="display:none;">
+            <h2>Enter Mobile Specifications</h2>
+            <form id="mobile-form">
+                <label for="mobile-brand">Brand:</label>
+                <select id="mobile-brand" name="brand" required>
+                    <option value="" disabled selected>Select Brand</option>
+                </select>
+
+                <label for="mobile-modelYear">Model Year:</label>
+                <select id="mobile-modelYear" name="modelYear" required>
+                </select>
+
+                <label for="mobile-screenSize">Screen Size (inches):</label>
+                <select id="mobile-screenSize" name="screenSize" required>
+                </select>
+
+                <label for="mobile-ram">RAM (GB):</label>
+                <select id="mobile-ram" name="ram" required>
+                </select>
+
+                <label for="mobile-battery">Battery Capacity (mAh):</label>
+                <select id="mobile-battery" name="battery" required>
+                </select>
+
+                <label for="mobile-storage">Storage (GB):</label>
+                <select id="mobile-storage" name="storage" required>
+                </select>
+
+                <label for="mobile-cpu">CPU:</label>
+                <select id="mobile-cpu" name="cpu" required>
+                </select>
+
+                <label for="mobile-os">Operating System:</label>
+                <select id="mobile-os" name="os" required>
+                    <option value="" disabled selected>Select OS</option>
+                    <option value="Android">Android</option>
+                    <option value="iOS">iOS</option>
+                    <option value="Windows Mobile">Windows Mobile</option>
+                </select>
+
+                <button type="submit">Predict Price</button>
+            </form>
+
+            <div class="result-container">
+                <h2>Predicted Price</h2>
+                <p id="mobile-predicted-price">Please enter mobile specifications and submit the form.</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
