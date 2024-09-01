@@ -5,7 +5,7 @@ This project automates the process of predicting commodity prices, helping users
 
 ## Key Features
 - **High Accuracy:** Leverages sophisticated machine learning models to deliver precise forecasts of commodity prices.
-- **Data-Driven Insights: **Analyzes historical price data and relevant market indicators to predict future trends.
+- **Data-Driven Insights:** Analyzes historical price data and relevant market indicators to predict future trends.
 - **User-Friendly Interface:** Offers a web-based platform for users to input data, view predictions, and analyze results.
 
 ## Technologies Used
